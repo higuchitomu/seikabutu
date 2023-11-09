@@ -11,10 +11,11 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function 掲示板(Request $request)
-      {
-       return view('users.掲示板')->with(['users' => $request->user]);
-     }
+    
+    public function index(Post $post)
+{
+    return view('posts.index')->with(['posts' => $post->getByLimit()]);
+}
       /**
      * Display the user's profile form.
      */
