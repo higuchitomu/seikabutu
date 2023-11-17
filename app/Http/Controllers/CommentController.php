@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Commnt;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 
-class CommntController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,12 @@ class CommntController extends Controller
      */
       public function index(Comment $comment)
     {
-    return view('comments.index')->with(['comments' => $comment->getByLimit()]);
+    return view('comments.index')->with(['comments' => $comment->getPaginateByLimit()]);
     }
     
        public function show(Comment $comment)
     {
-    return view('comments.show')->with(['comments' => $comment]);
+    return view('comments.show')->with(['comment' => $comment]);
     }
     /**
      * Show the form for creating a new resource.
@@ -30,37 +31,35 @@ class CommntController extends Controller
     {
     return view('comments.create');    //
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Comment $comment, CommentRequest $request)
     {
-        //
+       $input = $request['comment'];
+       $input += ['user_id' => $request->user()->id];
+       $comment->fill($input)->save();
+       return redirect('/comment'); //
     }
-
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Commnt  $commnt
      * @return \Illuminate\Http\Response
      */
-  
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Commnt  $commnt
      * @return \Illuminate\Http\Response
      */
-    public function edit(Commnt $commnt)
+    public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit')->with(['comment' => $comment]);//
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -68,19 +67,24 @@ class CommntController extends Controller
      * @param  \App\Models\Commnt  $commnt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Commnt $commnt)
+    public function update(CommentRequest $request, Comment $comment)
     {
-        //
-    }
+       $input_comment = $request['comment'];
+       $input += ['user_id' => $request->user()->id];
+    $comment->fill($input_comment)->save();
 
+    return redirect('/comment/' . $comment->id); //
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Commnt  $commnt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Commnt $commnt)
+    public function delete(Comment $comment)
     {
+        $comment->delete();
+        return redirect('/comment/');
         //
     }
 }

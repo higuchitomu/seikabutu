@@ -12,14 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('thread')" :active="request()->routeIs('dashboard')">
-                        {{ __('thread') }}
-                    </x-nav-link>
-                 <x-nav-link :href="route('vote')" :active="request()->routeIs('dashboard')">
-                        {{ __('vote') }}
-                    </x-nav-link> 
-                    <x-nav-link :href="route('event')" :active="request()->routeIs('dashboard')">
-                        {{ __('event') }}
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('comment') }}
                     </x-nav-link>
                 </div>
             </div>
