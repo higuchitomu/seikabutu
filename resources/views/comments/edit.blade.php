@@ -14,5 +14,6 @@
             </div>
             <input type="submit" value="保存">
         </form>
+        <div class="back">[<a href="/comments/{{ $comment->id }}">back</a>]</div>
     </div>
 </body>
