@@ -2,24 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Reply;
 use Illuminate\Http\Request;
-use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ReplyRequest;
+use App\Models\Comment;
 
 class ReplyController extends Controller
 {
-    public function store(ReplyRequest $request)
+    public function show(Reply $reply)
     {
-        $savedate = [
-            'title' => $request->title,
-            'content'=> $request->content,
-            'user_id'=> $request->user_id,
+    return view('replys.show')->with(['reply' => $reply]);
+    }
+    
+    public function create(Comment $comment)
+    {
+    return view('replys.create')->with(['comment' => $comment]);
+    }
+    
+    public function store(Reply $reply, ReplyRequest $request)
+    {
+        $savedata = $request['comment'];
+        $savedata += [
+            'user_id'=> \Auth::id(),
         ];
+        $reply->fill($savedata)->save();
         
-        $reply = new content;
-        $reply->fill($savedate)->save();
-        
-        return redirect()->route('comments/show',[$savedata['user_id']])->with('commentstatus','コメントを投稿しました');
+        return redirect()->route('show',[$savedata['comment_id']]);
     }
 }
 

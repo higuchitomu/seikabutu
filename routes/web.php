@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ReplyRequest;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,12 +39,18 @@ Route::get('/comments', function () {
 
 Route::get('/comment', [CommentController::class, 'index'])->name('index');
 Route::get('/comments/create', [CommentController::class, 'create'])->name('create');
-Route::get('/comments/reply/create', [CommentController::class, 'create'])->name('create');
-Route::get('/comments/{comment}', [CommentController::class ,'show']);
+Route::get('/comments/{comment}', [CommentController::class ,'show'])->name('show');
 Route::post('/comments', [CommentController::class, 'store']);
-Route::get('/comments/{comment}/edit', [CommentController::class, 'edit']);
 Route::put('/comments/{comment}', [CommentController::class, 'update']);
 Route::delete('/comments/{comment}', [CommentController::class,'delete']);
+Route::get('/comments/{comment}/edit', [CommentController::class, 'edit']);
+
+Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
+
+Route::get('/comments/{comment}/replies', [ReplyController::class, 'create'])->name('reply.create');
+Route::get('/replys/{comment}', [ReplyController::class ,'show']);
+Route::post('/comments/replies', [ReplyController::class, 'store'])->name('reply.store');
+
 
 
 

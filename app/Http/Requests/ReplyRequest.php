@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommentRequest extends FormRequest
+class ReplyRequest extends FormRequest
 {
+     
      public function rules()
     {
         return [
-            'comment.title' => 'required|string|max:100',
             'comment.content' => 'required|string|max:4000',
             //
         ];
