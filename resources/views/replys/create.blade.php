@@ -1,6 +1,6 @@
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>浦和ファンの集い</title>
     </head>
     <body>
         <form action="/comments/replies" method="POST">

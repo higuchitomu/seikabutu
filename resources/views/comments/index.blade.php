@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <div class="text-center text-6xl">浦和ファンの集い</div>
+        <div class="text-6xl">浦和ファンの集い</div>
         <a href='/comments/create'> <div class="text-red-500">[投稿作成画面に移動]</div></a>
         <div class='comments'>
             @foreach ($comments as $comment)

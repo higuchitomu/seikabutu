@@ -1,19 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('浦和ファン秘密情報交換広場') }}
+            {{ __('浦和ファン掲示板') }}
         </h2>
     </x-slot>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>浦和ファンの集い</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>掲示板</h1>
-        <a href='/comments/create'>create</a>
+        <div class="text-6xl">浦和ファンの集い</div>
+        <div class="text-5xl">[投稿内容のジャンルごとのページ]</div>
+        <a href="/comment">戻る</a>
         <div class='comments'>
             @foreach ($comments as $comment)
                 <div class='comment'>

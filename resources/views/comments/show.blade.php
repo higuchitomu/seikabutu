@@ -12,15 +12,15 @@
         <h1 class='title'>
         {{ $comment->title}}
         </h1>
-        <div Class= 'content'>
+        <h2 Class= 'content'>
             <div class='content_comment'>
                 <p class='content'>{{ $comment->content }}</p>
             </div>
-        </div>
+        </h2>
         <div class="edit"><a href="/comments/{{ $comment->id }}/edit">edit</a></div>
         <div class='footer'>
             <a href="/comment">戻る</a>
-             <a href="/comments/{{ $comment->id }}/replies">返信</a>
+            <a href="/comments/{{ $comment->id }}/replies">返信</a>
         </div>
         @foreach($comment->replies as $reply)
         <div>{{$reply->content}}</div>

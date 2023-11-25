@@ -48,7 +48,6 @@ Route::get('/comments/{comment}/edit', [CommentController::class, 'edit']);
 Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
 
 Route::get('/comments/{comment}/replies', [ReplyController::class, 'create'])->name('reply.create');
-Route::get('/replys/{comment}', [ReplyController::class ,'show']);
 Route::post('/comments/replies', [ReplyController::class, 'store'])->name('reply.store');
 
 

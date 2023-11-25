@@ -13,7 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                        {{ __('comment') }}
+                        {{ __('掲示板') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('ファンイベント') }}
                     </x-nav-link>
                 </div>
             </div>
