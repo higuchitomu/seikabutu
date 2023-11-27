@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-    　　 <title>Blog</title>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('浦和ファンの集い') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("浦和ファン同士で情報交換やファン同士でのイベントの告知を行っています") }}
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
 
         <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+     
 
-      
-    </head>
-    <body class="antialiased">
-        <h1>Blog Name</h1>
-        <a href='/posts/create'>create</a>
-        <div Class= 'posts'>
-            @foreach($posts as $post)
-            <div class='post'>
-                <a href="/posts/{{ $post->id}}"><h2 class='title'>{{ $post->title }}</h2></a>
-                <p class='body'>{{ $post->body }}</p>
-            </div>
-            @endforeach
-        </div>
-        <div class='paginate'>{{ $posts->links()}}</div>
-    </body>
-
-</html>
-
-</html>
+  

@@ -11,11 +11,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    
-    public function index(Post $post)
-{
-    return view('posts.index')->with(['posts' => $post->getByLimit()]);
-}
       /**
      * Display the user's profile form.
      */

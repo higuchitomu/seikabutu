@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 
-class Comment extends Model
+class Event extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -16,24 +16,18 @@ class Comment extends Model
     'title',
     'content',
     'user_id',
-    'category_id'
     ];
-
- 
-   public function getPaginateByLimit(int $limit_count = 10)
+    
+    public function getPaginateByLimit(int $limit_count = 10)
     {
-    return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-   public function user()
+     public function user()
    {
     return $this->belongsTo(User::class);
    }
-   public function category()
+   public function participants()
    {
-    return $this->belongsTo(Category::class);
-   }
-   public function replies()
-   {
-    return $this->hasMany(Reply::class);
+    return $this->hasMany(Participation::class);
    }
 }   

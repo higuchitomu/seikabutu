@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('replys', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('parent_comment_id')->nullable()->constrained('comments');
+            $table->foreignId('comment_id')->constrained();
             $table->string('title');
             $table->string('content');
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('replys');
     }
 };

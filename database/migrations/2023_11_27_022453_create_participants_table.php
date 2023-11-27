@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('parent_comment_id')->nullable()->constrained('comments');
-            $table->string('title');
+            $table->foreignId('event_id')->constrained();
+            $table->string('type_id');
             $table->string('content');
             $table->timestamps();
             $table->softDeletes();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('participants');
     }
 };
