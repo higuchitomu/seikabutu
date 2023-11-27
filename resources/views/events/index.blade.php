@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -14,27 +13,25 @@
     </head>
     <body>
         <div class="text-6xl">浦和ファンの集い</div>
-        <a href='/comments/create'> <div class="text-red-500">[投稿作成画面に移動]</div></a>
-        <div class='comments'>
-            @foreach ($comments as $comment)
-                <div class='comment'>
-                    <a href="/comments/{{ $comment->id }}"><h2 class='title'>{{ $comment->title }}</h2></a>
-                    <p class='content'>{{ $comment->content }}</p>
-                    <form action="/comments/{{ $comment->id }}" id="form_{{ $comment->id }}" method="post">
-                    @if (Auth::user()->id == $comment->user_id)    
+        <a href='/events/create'> <div class="text-red-500">[投稿作成画面に移動]</div></a>
+        <div class='events'>
+            @foreach ($events as $event)
+                <div class='event'>
+                    <a href="/events/{{ $event->id }}"><h2 class='title'>{{ $event->title }}</h2></a>
+                    <p class='content'>{{ $event->content }}</p>
+                    <form action="/events/{{ $event->id }}" id="form_{{ $event->id }}" method="post">
+                        @if (Auth::user()->id == $event->user_id)
                        @csrf
                        @method('DELETE')
-                    <button type="button" onclick="deleteComment({{ $comment->id }})">delete</button> 
+                    <button type="button" onclick="deleteEvent({{ $event->id }})">delete</button>
                     @endif
                   </form>
                 </div>
-                <a href="/categories/{{ $comment->category->id }}">{{ $comment->category->name }}</a>
-                <small>{{ $comment->user->name }}</small>
             @endforeach
             </div>
-            <div class='paginate'>{{ $comments->links()}}</div>
+            <div class='paginate'>{{ $events->links()}}</div>
             <script>
-    function deleteComment(id) {
+    function deleteEvent(id) {
         'use strict'
         if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
             document.getElementById(`form_${id}`).submit();

@@ -9,11 +9,6 @@ use App\Models\Comment;
 
 class ReplyController extends Controller
 {
-    public function show(Reply $reply)
-    {
-    return view('replys.show')->with(['reply' => $reply]);
-    }
-    
     public function create(Comment $comment)
     {
     return view('replys.create')->with(['comment' => $comment]);

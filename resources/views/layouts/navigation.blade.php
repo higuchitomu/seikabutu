@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('掲示板') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('event')" :active="request()->routeIs('event')">
                         {{ __('ファンイベント') }}
                     </x-nav-link>
                 </div>

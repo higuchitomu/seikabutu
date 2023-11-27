@@ -9,24 +9,17 @@
     </head>
     <body class="antialiased">
         <h1 class='title'>
-        {{ $comment->title}}
+        {{ $event->title}}
         </h1>
         <h2 Class= 'content'>
-            <div class='content_comment'>
-                <p class='content'>{{ $comment->content }}</p>
+            <div class='content_event'>
+                <p class='content'>{{ $event->content }}</p>
             </div>
         </h2>
-        <div class="edit"><a href="/comments/{{ $comment->id }}/edit">edit</a></div>
+        <div class="edit"><a href="/events/{{ $event->id }}/edit">edit</a></div>
+        <div class="create"><a href="/events/{{ $event->id }}/participants">create</a></div>
         <div class='footer'>
-            <a href="/comment">戻る</a>
-            <a href="/comments/{{ $comment->id }}/replies">返信</a>
+            <a href="/event">戻る</a>
         </div>
-        @foreach($comment->replies as $reply)
-        <div>{{$reply->content}}</div>
-        @endforeach
-        <a href="">{{ $comment->category->name }}</a>
-        <small>{{ $comment->user->name }}</small>
     </body>    
 </html>
-
-     

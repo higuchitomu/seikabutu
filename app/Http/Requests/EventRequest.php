@@ -4,13 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReplyRequest extends FormRequest
+class EventRequest extends FormRequest
 {
      
      public function rules()
     {
         return [
-            'reply.content' => 'required|string|max:4000',
+            'event.title' => 'required|string|max:100',
+            'event.content' => 'required|string|max:4000',
             //
         ];
     }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('vote_id')->constrained();
             $table->string('title');
             $table->string('content');
-             $table->string('item_select');
+            $table->string('item_select');
             $table->timestamps();
         });
     }
